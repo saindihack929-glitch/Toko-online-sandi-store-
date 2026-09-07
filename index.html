@@ -3,331 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2563eb">
-<title>Toko Online Saya</title>
+<title>Bagikan Lokasi Saya</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif}
-body{background:#f5f7fa;color:#1f2937}
-header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;padding:28px 16px;text-align:center}
-header h1{font-size:clamp(1.6rem,5vw,2.2rem);margin-bottom:6px}
-nav{position:sticky;top:0;z-index:10;background:#fff;padding:13px;text-align:center;box-shadow:0 2px 8px #00000012}
-nav a{margin:0 12px;color:#2563eb;text-decoration:none;font-weight:600}
-.container{max-width:1200px;margin:auto;padding:24px 16px}
-.section-title{margin-bottom:20px}
-.produk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.produk-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px #00000012;transition:.25s}
-.produk-card:hover{transform:translateY(-4px)}
-.produk-img{height:180px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:4rem}.produk-img img{width:100%;height:100%;object-fit:cover}
-.produk-info{padding:16px}
-.produk-nama{font-size:1.08rem;font-weight:700;margin-bottom:7px}
-.produk-harga{color:#dc2626;font-size:1.15rem;font-weight:800;margin-bottom:14px}
-.btn{width:100%;padding:11px;background:#2563eb;color:#fff;border:0;border-radius:9px;font-size:1rem;font-weight:600;cursor:pointer}
-.btn:hover{background:#1d4ed8}
-.keranjang{position:fixed;right:20px;bottom:20px;z-index:20;background:#ef4444;color:#fff;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;box-shadow:0 5px 18px #0003}
-.badge{position:absolute;right:-2px;top:-3px;background:#111827;color:#fff;font-size:.75rem;min-width:22px;height:22px;padding:0 5px;border-radius:20px;display:flex;align-items:center;justify-content:center}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:30;padding:20px}
-.modal-box{background:#fff;max-width:520px;width:100%;max-height:85vh;overflow:auto;margin:5vh auto;border-radius:16px;padding:20px}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
-.close{border:0;background:#eee;width:35px;height:35px;border-radius:50%;font-size:20px;cursor:pointer}
-.cart-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
-.cart-emoji{font-size:2rem;width:50px;text-align:center}
-.cart-detail{flex:1}
-.qty{display:flex;align-items:center;gap:8px;margin-top:7px}
-.qty button{border:0;background:#e5e7eb;width:28px;height:28px;border-radius:6px;cursor:pointer;font-weight:bold}
-.cart-price{font-weight:700;color:#dc2626}
-.total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800;padding:18px 0}
-.checkout{background:#16a34a}
-.checkout:hover{background:#15803d}
-.empty{text-align:center;padding:30px;color:#6b7280}
-footer{background:#1f2937;color:#fff;text-align:center;padding:25px 15px;margin-top:45px;line-height:1.8}
-@media(max-width:500px){nav a{margin:0 6px;font-size:.9rem}.produk-grid{grid-template-columns:repeat(2,1fr);gap:12px}.produk-img{height:130px;font-size:3rem}.produk-info{padding:12px}.produk-nama{font-size:.95rem}.produk-harga{font-size:1rem}.btn{font-size:.88rem;padding:9px}}
+body{font-family:Arial,sans-serif;background:#f3f6fa;margin:0;color:#1f2937}
+.container{max-width:520px;margin:auto;padding:24px 16px}
+.card{background:#fff;border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+h1{text-align:center}
+.info{background:#eef6ff;padding:14px;border-radius:12px;line-height:1.5}
+button{width:100%;border:0;border-radius:12px;padding:14px;margin-top:10px;font-size:16px;font-weight:bold}
+#locateBtn{background:#2563eb;color:#fff}
+#shareBtn{background:#16a34a;color:#fff;display:none}
+#copyBtn{background:#e5e7eb;color:#111827;display:none}
+#status{margin-top:18px;padding:14px;border-radius:12px;background:#f8fafc}
+.coords{display:none;margin-top:14px;padding:14px;background:#f1f5f9;border-radius:12px;word-break:break-word}
+.small{font-size:13px;color:#64748b}
 </style>
 </head>
 <body>
-
-<header>
-<h1>🛍️ Toko Online Saya</h1>
-<p>Belanja Mudah, Harga Terjangkau</p>
-</header>
-
-<nav>
-<a href="#beranda">Beranda</a>
-<a href="#produk">Produk</a>
-<a href="#tentang">Tentang</a>
-<a href="#kontak">Kontak</a>
-</nav>
-
-<main id="beranda" class="container">
-<h2 id="produk" class="section-title">🔥 Produk Unggulan</h2>
-<div style="background:#eff6ff;border:1px solid #bfdbfe;padding:14px 16px;border-radius:12px;margin-bottom:20px;color:#1e40af">
-<strong>💡 Pemilik toko:</strong> Untuk mengubah nama toko, WhatsApp, email, atau produk, buka bagian <b>“PENGATURAN TOKO”</b> dan <b>“DAFTAR PRODUK”</b> di dalam file HTML.
-</div>
-
-<div class="produk-grid">
-
-<div class="produk-card">
-<div class="produk-img">📦</div>
-<div class="produk-info">
-<div class="produk-nama">Produk Contoh 1</div>
-<div class="produk-harga">Rp 50.000</div>
-<button class="btn" onclick="tambah(1)">+ Masukkan Keranjang</button>
-</div>
-</div>
-
-<div class="produk-card">
-<div class="produk-img">👕</div>
-<div class="produk-info">
-<div class="produk-nama">Baju Kaos Keren</div>
-<div class="produk-harga">Rp 75.000</div>
-<button class="btn" onclick="tambah(2)">+ Masukkan Keranjang</button>
-</div>
-</div>
-
-<div class="produk-card">
-<div class="produk-img">👟</div>
-<div class="produk-info">
-<div class="produk-nama">Sepatu Olahraga</div>
-<div class="produk-harga">Rp 150.000</div>
-<button class="btn" onclick="tambah(3)">+ Masukkan Keranjang</button>
-</div>
-</div>
-
-<div class="produk-card">
-<div class="produk-img">📱</div>
-<div class="produk-info">
-<div class="produk-nama">Aksesoris HP</div>
-<div class="produk-harga">Rp 35.000</div>
-<button class="btn" onclick="tambah(4)">+ Masukkan Keranjang</button>
-</div>
-</div>
-
-</div>
-</main>
-
-<section id="tentang" class="container">
-<h2>Tentang Toko</h2>
-<p style="margin-top:10px">Selamat datang di Toko Online Saya. Nikmati belanja mudah dengan harga terjangkau.</p>
-</section>
-
-<div class="keranjang" onclick="bukaKeranjang()">🛒<span class="badge" id="badge">0</span></div>
-
-<div class="modal" id="modal">
-<div class="modal-box">
-<div class="modal-head">
-<h2>🛒 Keranjang</h2>
-<button class="close" onclick="tutupKeranjang()">×</button>
-</div>
-<div id="cartList"></div>
-<div class="total"><span>Total</span><span id="total">Rp 0</span></div>
-<button class="btn checkout" onclick="checkout()">📲 Checkout via WhatsApp</button>
-</div>
-</div>
-
-<footer id="kontak">
-<p>📞 WhatsApp: 08xx-xxxx-xxxx | 📧 email@anda.com</p>
-<p>&copy; 2026 Toko Online Saya. Semua Hak Dilindungi.</p>
-</footer>
-
+<div class="container"><div class="card">
+<h1>📍 Bagikan Lokasi Saya</h1>
+<div class="info">Lokasi hanya diakses setelah pemilik perangkat <strong>memberikan izin</strong> melalui browser.</div>
+<button id="locateBtn">📍 Izinkan & Cari Lokasi Saya</button>
+<button id="shareBtn">📤 Bagikan Lokasi</button>
+<button id="copyBtn">📋 Salin Link Peta</button>
+<div id="status">Belum ada lokasi yang dibagikan.</div>
+<div id="coords" class="coords"><strong>Lokasi ditemukan:</strong><div id="coordinateText"></div><p class="small">Tautan peta:</p><a id="mapLink" href="#" target="_blank" rel="noopener">Buka di Google Maps</a></div>
+<p class="small" style="text-align:center;margin-top:20px">Lokasi tidak dikirim ke server oleh halaman ini.</p>
+</div></div>
 <script>
-/*
-====================================================
-            ⚙️ PENGATURAN TOKO - MUDAH DIEDIT
-====================================================
-Cukup ubah bagian di bawah ini.
-Nomor WhatsApp gunakan format 62, tanpa + dan tanpa 0 di depan.
-====================================================
-*/
-const PENGATURAN_TOKO = {
-    nama: "Toko Online Saya",
-    slogan: "Belanja Mudah, Harga Terjangkau",
-    whatsapp: "6285137675627",
-    email: "email@anda.com",
-    tahun: "2026"
+const locateBtn=document.getElementById("locateBtn"),shareBtn=document.getElementById("shareBtn"),copyBtn=document.getElementById("copyBtn"),statusBox=document.getElementById("status"),coordsBox=document.getElementById("coords"),coordinateText=document.getElementById("coordinateText"),mapLink=document.getElementById("mapLink");
+let mapUrl="";
+locateBtn.onclick=()=>{
+ if(!navigator.geolocation){statusBox.textContent="❌ Browser tidak mendukung lokasi.";return}
+ statusBox.textContent="⏳ Meminta izin dan mencari lokasi...";
+ navigator.geolocation.getCurrentPosition(p=>{
+  const lat=p.coords.latitude,lon=p.coords.longitude;
+  mapUrl=`https://www.google.com/maps?q=${lat},${lon}`;
+  coordinateText.textContent=`Latitude: ${lat.toFixed(6)} | Longitude: ${lon.toFixed(6)}`;
+  mapLink.href=mapUrl;coordsBox.style.display="block";shareBtn.style.display="block";copyBtn.style.display="block";
+  statusBox.textContent="✅ Lokasi ditemukan. Kamu bisa membagikannya.";
+ },e=>{
+  statusBox.textContent=e.code===1?"❌ Izin lokasi ditolak. Izinkan lokasi di browser.":e.code===2?"❌ Lokasi tidak tersedia. Aktifkan GPS/lokasi perangkat.":"❌ Pencarian lokasi gagal. Coba lagi.";
+ },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
 };
-
-/*
-====================================================
-                🛍️ DAFTAR PRODUK
-====================================================
-Untuk mengganti produk, edit nama, harga, emoji, dan deskripsi.
-Harga ditulis angka saja. Contoh: 75000
-====================================================
-*/
-const produk = [
-    {
-        id: 1,
-        nama: "Produk Contoh 1",
-        harga: 50000,
-        emoji: "📦",
-        deskripsi: "Produk contoh dengan harga terjangkau."
-    },
-    {
-        id: 2,
-        nama: "Baju Kaos Keren",
-        harga: 75000,
-        emoji: "👕",
-        deskripsi: "Kaos keren dan nyaman dipakai."
-    },
-    {
-        id: 3,
-        nama: "Sepatu Olahraga",
-        harga: 150000,
-        emoji: "👟",
-        deskripsi: "Sepatu untuk aktivitas olahraga."
-    },
-    {
-        id: 4,
-        nama: "Aksesoris HP",
-        harga: 35000,
-        emoji: "📱",
-        deskripsi: "Aksesoris HP pilihan dengan harga terjangkau."
-    }
-];
-
-let cart = JSON.parse(localStorage.getItem("cartToko")) || [];
-
-function rupiah(n) {
-    return new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        maximumFractionDigits: 0
-    }).format(n);
-}
-
-function tampilkanProduk() {
-    const grid = document.getElementById("produkGrid");
-
-    grid.innerHTML = produk.map(p => `
-        <div class="produk-card">
-            <div class="produk-img">${p.emoji}</div>
-            <div class="produk-info">
-                <div class="produk-nama">${p.nama}</div>
-                <div class="produk-harga">${rupiah(p.harga)}</div>
-                <p style="font-size:.9rem;color:#6b7280;margin-bottom:12px">${p.deskripsi}</p>
-                <button class="btn" onclick="tambah(${p.id})">+ Masukkan Keranjang</button>
-            </div>
-        </div>
-    `).join("");
-}
-
-function simpan() {
-    localStorage.setItem("cartToko", JSON.stringify(cart));
-    render();
-}
-
-function tambah(id) {
-    const item = cart.find(x => x.id === id);
-    if (item) item.qty++;
-    else cart.push({ id, qty: 1 });
-    simpan();
-    bukaKeranjang();
-}
-
-function ubah(id, delta) {
-    const item = cart.find(x => x.id === id);
-    if (!item) return;
-
-    item.qty += delta;
-
-    if (item.qty <= 0) {
-        cart = cart.filter(x => x.id !== id);
-    }
-
-    simpan();
-}
-
-function render() {
-    const list = document.getElementById("cartList");
-    const badge = document.getElementById("badge");
-    const totalEl = document.getElementById("total");
-
-    const jumlah = cart.reduce((s, x) => s + x.qty, 0);
-    badge.textContent = jumlah;
-
-    if (!cart.length) {
-        list.innerHTML = '<div class="empty">Keranjang masih kosong.<br>Yuk pilih produk 😊</div>';
-        totalEl.textContent = rupiah(0);
-        return;
-    }
-
-    let total = 0;
-
-    list.innerHTML = cart.map(item => {
-        const p = produk.find(x => x.id === item.id);
-        if (!p) return "";
-
-        const sub = p.harga * item.qty;
-        total += sub;
-
-        return `
-        <div class="cart-item">
-            <div class="cart-emoji">${p.emoji}</div>
-            <div class="cart-detail">
-                <b>${p.nama}</b>
-                <div class="qty">
-                    <button onclick="ubah(${p.id}, -1)">−</button>
-                    <span>${item.qty}</span>
-                    <button onclick="ubah(${p.id}, 1)">+</button>
-                </div>
-            </div>
-            <div class="cart-price">${rupiah(sub)}</div>
-        </div>`;
-    }).join("");
-
-    totalEl.textContent = rupiah(total);
-}
-
-function bukaKeranjang() {
-    document.getElementById("modal").style.display = "block";
-    render();
-}
-
-function tutupKeranjang() {
-    document.getElementById("modal").style.display = "none";
-}
-
-function checkout() {
-    if (!cart.length) {
-        alert("Keranjang masih kosong.");
-        return;
-    }
-
-    let pesan = `Halo ${PENGATURAN_TOKO.nama}, saya ingin memesan:%0A%0A`;
-    let total = 0;
-
-    cart.forEach(item => {
-        const p = produk.find(x => x.id === item.id);
-        if (!p) return;
-
-        const sub = p.harga * item.qty;
-        total += sub;
-
-        pesan += `• ${p.nama} x${item.qty} = ${rupiah(sub)}%0A`;
-    });
-
-    pesan += `%0A*Total: ${rupiah(total)}*%0A%0AMohon informasi cara pembayarannya.`;
-
-    window.open(
-        `https://wa.me/${PENGATURAN_TOKO.whatsapp}?text=${pesan}`,
-        "_blank"
-    );
-}
-
-/* Mengisi informasi toko otomatis */
-document.querySelector("header h1").textContent = "🛍️ " + PENGATURAN_TOKO.nama;
-document.querySelector("header p").textContent = PENGATURAN_TOKO.slogan;
-
-const footer = document.querySelector("footer");
-footer.innerHTML = `
-    <p>📞 WhatsApp: ${PENGATURAN_TOKO.whatsapp.replace(/^62/, "0")} | 📧 ${PENGATURAN_TOKO.email}</p>
-    <p>&copy; ${PENGATURAN_TOKO.tahun} ${PENGATURAN_TOKO.nama}. Semua Hak Dilindungi.</p>
-`;
-
-tampilkanProduk();
-render();
-window.onclick = e => {
-    if (e.target === document.getElementById("modal")) tutupKeranjang();
+shareBtn.onclick=async()=>{
+ if(!mapUrl)return;
+ if(navigator.share){try{await navigator.share({title:"Lokasi Saya",text:"Ini lokasi yang saya pilih untuk dibagikan:",url:mapUrl})}catch(e){}}
+ else copyMapLink();
 };
+copyBtn.onclick=copyMapLink;
+async function copyMapLink(){if(!mapUrl)return;try{await navigator.clipboard.writeText(mapUrl);statusBox.textContent="✅ Link Google Maps berhasil disalin."}catch(e){prompt("Salin link ini:",mapUrl)}}
 </script>
 </body>
 </html>
